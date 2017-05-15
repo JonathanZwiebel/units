@@ -1,5 +1,11 @@
 class ComplexUnit(object):
 	def __init__(self, unit_map):
+		zeroes = []
+		for unit in unit_map:
+			if unit_map[unit] == 0:
+				zeroes.append(unit)
+		for unit in zeroes:
+			del unit_map[unit]
 		self.unit_map = unit_map
 
 	def get_unit_map(self):
