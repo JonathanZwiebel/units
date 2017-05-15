@@ -1,30 +1,34 @@
 import ComplexUnit as cu
 import ComplexValue as cv
 
-kilogram_system = {"kg":1, "m":0, "s":0}
-kilogram = cu.ComplexUnit(kilogram_system)
+unitless = cu.ComplexUnit({})
+kilogram = cu.ComplexUnit({"kg":1})
+meter = cu.ComplexUnit({"m":1})
+second = cu.ComplexUnit({"s":1})
+ampere = cu.ComplexUnit({"A":1})
+kelvin = cu.ComplexUnit({"K":1})
+candela = cu.ComplexUnit({"cd":1})
+si_library = [unitless, kilogra, meter, second, ampere, kelvin, candela]
 
-meter_system = {"kg":0, "m":1, "s":0}
-meter = cu.ComplexUnit(meter_system)
+hertz = cu.reciprocal(second)
+meterpersecond = cu.divide(meter, second)
+meterpersecondsquared = cu.divide(meterpersecond, second)
+kilogrammeter = cu.multiply(meter, kilogram)
+metersquared = cu.multiply(meter, meter)
+metercubed = cu.multiply(metersquared, meter)
+newton = cu.multiply(meterpersecondsquared, kilogram)
+joule = cu.multiply(newton, meter)
+watt = cu.divide(joule, second)
+pascal = cu.divide(newton, metersquared)
+coulomb = cu.multiply(second, ampere)
+volt = cu.divide(watt, ampere)
+farad = cu.divide(coulomb, volt)
+ohm = cu.divide(volt, ampere)
+siemen = cu.reciprocal(ohm)
+weber = cu.divide(joule, ampere)
+tesla = cu.divide(weber, metersquared)
+henry = cu.divide(weber, ampere)
+derived_library = [hertz, meterpersecond, meterpersecondsquared, kilogrammeter, metersquared, metercubed, newton, joule, watt, pascal, coulomb, volt, farad, ohm, siemen, weber, tesla, henry]
 
-second_system = {"kg":0, "m":0, "s":1}
-second = cu.ComplexUnit(second_system)
+standard_library = si_library + derived_library
 
-velocity_system = {"kg":0, "m":1, "s":-1}
-velocity = cu.ComplexUnit(velocity_system)
-
-acceleration_system = {"kg":0, "m":1, "s":-2}
-acceleration = cu.ComplexUnit(acceleration_system)
-
-momentum_system = {"kg":1, "m":1, "s":0}
-momentum = cu.ComplexUnit(momentum_system)
-
-newton_system = {"kg":1, "m":1, "s":-2}
-newton = cu.ComplexUnit(newton_system)
-
-x = cv.ComplexValue(5, kilogram)
-y = cv.ComplexValue(7, acceleration)
-xy = cv.multiply(x, y)
-
-z = cv.ComplexValue(12, newton)
-print cv.add(xy, z).to_string()
