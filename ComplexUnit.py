@@ -53,3 +53,13 @@ def multiply(cu1, cu2):
 		if not base_unit in new_map:
 			new_map[base_unit] = cu2.get_unit_map()[base_unit]
 	return ComplexUnit(new_map)
+
+# Returns a new ComplexUnit that is the reciprocal of this unit 
+def reciprocal(cu):
+	new_map = {}
+	for base_unit in cu.get_unit_map():
+		new_map[base_unit] = -cu.get_unit_map()[base_unit]
+	return ComplexUnit(new_map)
+
+def divide(cu1, cu2):
+	return multiply(cu1, reciprocal(cu2))
