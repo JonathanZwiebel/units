@@ -101,8 +101,13 @@ def add(*cvs):
 def subtract(cv1, cv2):
 	return add(cv1, negate(cv2))
 
-def multiply(cv1, cv2):
-	return ComplexValue(cv1.get_value() * cv2.get_value(), cu.multiply(cv1.get_unit(), cv2.get_unit()))
+def multiply(*cvs):
+	units = []
+	new_value = 1
+	for cv in cvs:
+		units.append(cv.get_unit())
+		new_value *= cv.get_value()
+	return ComplexValue(new_value, cu.multiply(*tuple(units)))
 
 def divide(cv1, cv2):
 	return ComplexValue(cv1.get_value() / cv2.get_value(), cu.divide(cv1.get_unit(), cv2.get_unit()))

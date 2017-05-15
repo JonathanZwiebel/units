@@ -42,16 +42,14 @@ def equals(cu1, cu2):
 	return True
 
 # Multiplies two units together by taking all of thier exponents and adding them together
-def multiply(cu1, cu2):
+def multiply(*cus):
 	new_map = {}
-	for base_unit in cu1.get_unit_map():
-		if base_unit in cu2.get_unit_map():
-			new_map[base_unit] = cu1.get_unit_map()[base_unit] + cu2.get_unit_map()[base_unit]
-		else:
-			new_map[base_unit] = cu1.get_unit_map()[base_unit]
-	for base_unit in cu2.get_unit_map():
-		if not base_unit in new_map:
-			new_map[base_unit] = cu2.get_unit_map()[base_unit]
+	for cu in cus:
+		for base_unit in cu.get_unit_map():
+			if base_unit in new_map:
+				new_map[base_unit] = cu.get_unit_map()[base_unit] + new_map[base_unit]
+			else:
+				new_map[base_unit] = cu.get_unit_map()[base_unit]
 	return ComplexUnit(new_map)
 
 # Returns a new ComplexUnit that is the reciprocal of this unit 
