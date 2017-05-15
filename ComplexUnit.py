@@ -1,3 +1,6 @@
+# Author: Jonathan Zwiebel
+# Version: 15 April 2017
+
 class ComplexUnit(object):
 	def __init__(self, unit_map):
 		zeroes = []

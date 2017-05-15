@@ -1,3 +1,8 @@
+# Author: Jonathan Zwiebel
+# Version: 15 April 2017
+
+import ComplexUnit as cu
+
 class ComplexValue(object):
 	# A class for holding a complex value consisting of a single number and a combination of 
 	# units with powers
