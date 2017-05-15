@@ -76,8 +76,11 @@ def unit_lookup(library, unit):
 	return unit.to_string()
 
 def show(complex_value):
-	unitname = unit_lookup(standard_library, complex_value.get_unit())
-	print str(complex_value.get_value()) + " " + unitname
+	if complex_value.get_is_valid():
+		unitname = unit_lookup(standard_library, complex_value.get_unit())
+		print str(complex_value.get_value()) + " " + unitname
+	else:
+		print "invalid"
 
 # Negate a complex value
 def negate(cv):
