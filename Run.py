@@ -1,24 +1,30 @@
 import ComplexUnit as cu
 import ComplexValue as cv
 
-momentum_system = {"kg":1, "m":1}
+kilogram_system = {"kg":1, "m":0, "s":0}
+kilogram = cu.ComplexUnit(kilogram_system)
+
+meter_system = {"kg":0, "m":1, "s":0}
+meter = cu.ComplexUnit(meter_system)
+
+second_system = {"kg":0, "m":0, "s":1}
+second = cu.ComplexUnit(second_system)
+
+velocity_system = {"kg":0, "m":1, "s":-1}
+velocity = cu.ComplexUnit(velocity_system)
+
+acceleration_system = {"kg":0, "m":1, "s":-2}
+acceleration = cu.ComplexUnit(acceleration_system)
+
+momentum_system = {"kg":1, "m":1, "s":0}
 momentum = cu.ComplexUnit(momentum_system)
-print momentum.to_string()
 
-newton_system = {"m":1, "s": -2, "kg":1}
+newton_system = {"kg":1, "m":1, "s":-2}
 newton = cu.ComplexUnit(newton_system)
-print newton.to_string()
 
-x = cv.ComplexValue(5, newton)
-y = cv.ComplexValue(7, newton)
-a = cv.ComplexValue(12, momentum)
-b = cv.ComplexValue(17, momentum)
+x = cv.ComplexValue(5, kilogram)
+y = cv.ComplexValue(7, acceleration)
+xy = cv.multiply(x, y)
 
-print ("\n")
-
-print cv.negate(x).to_string()
-print cv.add(x, y).to_string()
-print cv.add(x, a).to_string()
-print cv.subtract(x, y).to_string()
-print cv.subtract(y, x).to_string()
-print cv.add(a, b).to_string()
+z = cv.ComplexValue(12, newton)
+print cv.add(xy, z).to_string()
