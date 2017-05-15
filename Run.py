@@ -1,7 +1,10 @@
 import ComplexUnit as cu
 import ComplexValue as cv
 
-a = cv.ComplexValue(20, cu.joule)
-b = cv.ComplexValue(3, cu.second)
-c = cv.divide(a, b)
-cv.show(c)
+a = cv.ComplexValue(20.0, cu.watt)
+b = cv.ComplexValue(14.0, cu.watt)
+c = cv.ComplexValue(7.0, cu.watt)
+d = cv.ComplexValue(-845, cu.watt)
+
+f = cv.add(a, b, c, d)
+cv.show(f)

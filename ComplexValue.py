@@ -87,11 +87,15 @@ def negate(cv):
 	return ComplexValue(-cv.get_value(), cv.get_unit())
 
 # Add two ComplexValues
-def add(cv1, cv2):
-	if not cu.equals(cv1.get_unit(), cv2.get_unit()):
-		print "Unit mismatch: " + cv1.get_unit().to_string() + "against " + cv2.get_unit().to_string()
-		return ComplexValue(0, "invalid")
-	return ComplexValue(cv1.get_value() + cv2.get_value(), cv1.get_unit())
+def add(*cvs):
+	cv1 = cvs[0]
+	value_sum = cv1.get_value()
+	for i in range(1, len(cvs)):
+		if not cu.equals(cv1.get_unit(), cvs[i].get_unit()):
+			print "Unit mismatch: " + unit_lookup(standard_library, cv1.get_unit()) + " against " + unit_lookup(standard_library, cvs[i].get_unit())
+			return ComplexValue(0, "invalid")
+		value_sum += cvs[i].get_value()
+	return ComplexValue(value_sum, cv1.get_unit())
 
 # Subtract two ComplexValues
 def subtract(cv1, cv2):
