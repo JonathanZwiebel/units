@@ -101,6 +101,9 @@ def add(*cvs):
 def subtract(cv1, cv2):
 	return add(cv1, negate(cv2))
 
+def reciprocal(cv):
+	return ComplexValue(1 / cv.get_value(), cu.reciprocal(cv.get_unit()))
+
 def multiply(*cvs):
 	units = []
 	new_value = 1
